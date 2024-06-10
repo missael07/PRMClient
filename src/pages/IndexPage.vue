@@ -1,16 +1,16 @@
 <template>
-  <div class="row items-center justify-evenly">
-    <h3 class="title">Bienvenido!</h3>
-  </div>
-  <q-page class="row justify-evenly q-mt-xl">
-    <div v-for="item of menu" :key="item.displayText" class="text-h6" >
-      <router-link :to="{name: item.route }" class="">
-      <div  class="row justify-evenly">
-        <q-icon outline :name="item.icon" size="6rem" />
-      </div>
-       {{  item.displayText }}
+  <q-page>
+    <div class="row items-center justify-evenly">
+      <h3 class="title">Bienvenido!</h3>
+    </div>
+    <div class="row justify-evenly text-h6">
+    <div v-for="item in menu" :key="item.displayText" class="column items-center">
+      <router-link :to="{ name: item.route }" class="flex flex-column items-center no-decoration">
+        <q-icon :name="item.icon" size="6rem" />
+        <div>{{ item.displayText }}</div>
       </router-link>
     </div>
+  </div>
   </q-page>
 </template>
 
@@ -35,3 +35,32 @@ const menu = ref([
 ])
 
 </script>
+
+<style lang="scss" scoped>
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: inherit;
+}
+
+.q-icon + div {
+  margin-top: 0.5rem; /* Espaciado entre el icono y el texto */
+}
+</style>
