@@ -1,23 +1,20 @@
 // app global css in SCSS form
-body {
-    background-image: url('../assets/fondoNutricion.png');
-    background-repeat: repeat;
-    background-color: #EEEEEE;
-    
-  }
 
-  .mi-fondo {
-    background-image: url('../assets/nutricion2-removebg-preview.png');
-    background-size: 35%;
-    background-repeat: repeat;
-    background-position: center center;
+  body {
+    background-image: url('../assets/Body-bg.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    // background-position: center center;
     width: 100%;
     height: 100vh;
-    color: var(--q-primary);
-    // filter: grayscale(100%) brightness(0.8); /* Aplica escala de grises y ajusta el brillo */
+    color: #365B6D
   }
 
   a {
     text-decoration: none;
-    color: var(--q-primary);
+    color: #365B6D;
+  }
+
+.title {
+    color: #1D4355;
   }

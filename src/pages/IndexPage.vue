@@ -1,9 +1,12 @@
 <template>
+  <div class="row items-center justify-evenly">
+    <h3 class="title">Bienvenido!</h3>
+  </div>
   <q-page class="row justify-evenly q-mt-xl">
-    <div v-for="item of menu" :key="item.displayText" class="text-h6" color="primary">
-      <router-link to="google.com" class="">
+    <div v-for="item of menu" :key="item.displayText" class="text-h6" >
+      <router-link :to="{name: item.route }" class="">
       <div  class="row justify-evenly">
-        <q-icon outline :name="item.icon" color="primary" size="6rem" />
+        <q-icon outline :name="item.icon" size="6rem" />
       </div>
        {{  item.displayText }}
       </router-link>
@@ -26,7 +29,7 @@ const menu = ref([
   },
   {
     displayText: 'Expedientes',
-    route: 'Records',
+    route: 'Index',
     icon: 'library_books'
   }
 ])

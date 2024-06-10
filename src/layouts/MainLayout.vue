@@ -1,8 +1,5 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <div class="row items-center justify-evenly">
-      <h3>Bienvenido!</h3>
-    </div>
     <q-page-container>
       <router-view />
     </q-page-container>
