@@ -167,7 +167,7 @@ import usePatients from "../composables/usePatients";
 import usePatientDialog from "../composables/usePatientDialog";
 
 const { prompt } = usePatientDialog();
-const { createPatient, loading, createRecordFromPatientView } = usePatients();
+const { createPatient, loading, createRecordFromPatientView, getPatients } = usePatients();
 const step = ref(1);
 const isPwd = ref(true);
 const createRecord = ref(false);
@@ -196,6 +196,7 @@ const save = async () => {
       })
     }
     reset();
+    getPatients('')
   } else {
     console.log(result);
   }
