@@ -4,13 +4,13 @@ import { Patient } from "../interface/patient.interface";
 
 const patientList = ref<Patient[]>([]);
 
-const BASE_URL = process.env.VUE_APP_API_URL;
+const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
 
 const loading = ref(false);
 const usePatients = () => {
   const getPatients = async (term: string) => {
     loading.value = true;
-    const result = await axios.get(`${process.env.VUE_APP_API_URL}/api/patients`, {
+    const result = await axios.get(`${BASE_URL}/patients`, {
       params: { term },
     });
     patientList.value = result.data;
