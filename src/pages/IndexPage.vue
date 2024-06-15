@@ -29,7 +29,7 @@ const menu = ref([
   },
   {
     displayText: 'Expedientes',
-    route: 'Index',
+    route: 'Records',
     icon: 'library_books'
   }
 ])

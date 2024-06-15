@@ -172,8 +172,8 @@ const step = ref(1);
 const isPwd = ref(true);
 const createRecord = ref(false);
 
-const email = ref("missael@test2.comm");
-const fullName = ref("Misssael Padila");
+const email = ref("");
+const fullName = ref("");
 const password = ref("");
 const upperCase = ref(false);
 const lowerCase = ref(false);
@@ -188,13 +188,10 @@ const save = async () => {
   },createRecord.value);
 
   if (result) {
-
-    if( createRecord.value ) {
       const response = await createRecordFromPatientView({
         userId: result.id ?? '',
         startWeigth: 0
       })
-    }
     reset();
     getPatients('')
   } else {

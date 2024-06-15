@@ -1,13 +1,5 @@
 <template>
-  <div class="row items-center title">
-    <q-icon
-      name="arrow_back_ios_new"
-      @click="$router.back"
-      size="2rem"
-      class="q-mr-md"
-    />
-    <h3>Pacientes</h3>
-  </div>
+  <HeaderPage title="Expedientes"/>
   <Filter />
   <q-btn
     color="secondary"
@@ -26,6 +18,7 @@ import UsersTable from "../components/TableComponent.vue";
 import PatientDialog from "../components/PatientDialog.vue";
 
 import usePatientDialog from '../composables/usePatientDialog';
+import HeaderPage from 'src/shared/component/HeaderPage.vue';
 
 const { openDialog } = usePatientDialog();
 const addPatient = () => {

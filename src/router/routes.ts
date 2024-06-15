@@ -10,6 +10,22 @@ const routes: RouteRecordRaw[] = [
       },
       { 
         path: 'users', name:'Users', component: () => import('../modules/admin/pages/UserListPage.vue') 
+      },
+      { 
+        path: 'records', name:'Records', component: () => import('../modules/patients/pages/RecordListPage.vue'),
+        children: [
+          
+        ]
+      },
+      {
+        path: 'records/:id',
+        name: 'Create-Record',
+        component: () => import('../modules/patients/components/RecordPage.vue')
+      },
+      {
+        path: 'records/history/:id',
+        name: 'History',
+        component: () => import('../modules/patients/components/DietHistory.vue')
       }
     ],
   },
