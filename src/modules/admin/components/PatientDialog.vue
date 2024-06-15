@@ -124,13 +124,6 @@
               color="secondary"
               icon="add_comment"
             >
-              <div class="q-gutter-sm">
-                <q-checkbox
-                  v-model="createRecord"
-                  color="secondary"
-                  label="Quieres crear el Expediente ahora?"
-                />
-              </div>
               <q-stepper-navigation>
                 <q-btn
                   flat
