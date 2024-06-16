@@ -1,5 +1,5 @@
 <template>
-  <HeaderPage title="Expedientes"/>
+  <HeaderPage title="Pacientes"/>
   <Filter />
   <q-btn
     color="secondary"

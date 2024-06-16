@@ -6,26 +6,33 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { 
-        path: '',name: 'Index', component: () => import('pages/IndexPage.vue') 
+        path: '',name: 'Index', component: () => import('pages/IndexPage.vue'),
+        meta: { requiresAuth: true, roles: ['admin'] }
       },
       { 
-        path: 'users', name:'Users', component: () => import('../modules/admin/pages/UserListPage.vue') 
+        path: 'users', name:'Users', component: () => import('../modules/admin/pages/UserListPage.vue') ,
+        meta: { requiresAuth: true, roles: ['admin'] }
       },
       { 
         path: 'records', name:'Records', component: () => import('../modules/patients/pages/RecordListPage.vue'),
-        children: [
-          
-        ]
+        meta: { requiresAuth: true, roles: ['admin'] }
       },
       {
         path: 'records/:id',
         name: 'Create-Record',
-        component: () => import('../modules/patients/components/RecordPage.vue')
+        component: () => import('../modules/patients/components/RecordPage.vue'),
+        meta: { requiresAuth: true, roles: ['admin'] }
       },
       {
         path: 'records/history/:id',
         name: 'History',
-        component: () => import('../modules/patients/components/DietHistory.vue')
+        component: () => import('../modules/patients/components/DietHistory.vue'),
+        meta: { requiresAuth: true, roles: ['admin'] }
+      },
+      {
+        path: 'signin',
+        name: 'Sign-In',
+        component: () => import('../modules/auth/page/LoginPage.vue')
       }
     ],
   },
