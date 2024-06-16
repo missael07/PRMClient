@@ -10,23 +10,23 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true, roles: ['admin'] }
       },
       { 
-        path: 'users', name:'Users', component: () => import('../modules/admin/pages/UserListPage.vue') ,
+        path: 'users', name:'Users', component: () => import('src/modules/admin/patients/pages/UserListPage.vue') ,
         meta: { requiresAuth: true, roles: ['admin'] }
       },
       { 
-        path: 'records', name:'Records', component: () => import('../modules/patients/pages/RecordListPage.vue'),
+        path: 'records', name:'Records', component: () => import('src/modules/admin/records/pages/RecordListPage.vue'),
         meta: { requiresAuth: true, roles: ['admin'] }
       },
       {
         path: 'records/:id',
         name: 'Create-Record',
-        component: () => import('../modules/patients/components/RecordPage.vue'),
+        component: () => import('src/modules/admin/records/components/RecordPage.vue'),
         meta: { requiresAuth: true, roles: ['admin'] }
       },
       {
         path: 'records/history/:id',
         name: 'History',
-        component: () => import('../modules/patients/components/DietHistory.vue'),
+        component: () => import('src/modules/admin/records/components/DietHistory.vue'),
         meta: { requiresAuth: true, roles: ['admin'] }
       },
       {

@@ -1,4 +1,4 @@
-import { Patient } from "src/modules/admin/interface/patient.interface";
+import { Patient } from "src/modules/admin/patients/interface/patient.interface";
 
 export interface Record {
     id?: string;
