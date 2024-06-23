@@ -93,43 +93,43 @@ const form = ref({
   remember: false
 });
 
-const { signIn } = useAuth();
+const { signIn, redirectToAdminSite } = useAuth();
 const onSubmit = async () => {
-  console.log(form.value)
   const {email, password } = form.value;
   const result = await signIn({email, password});
   localStorage.setItem('token', result.token)
-  route.push({name: 'Index'})
+  const role = localStorage.getItem('role');
+  route.push({name: redirectToAdminSite(role ?? '') ? 'Index' : 'Dashboard'})
 };
 
 </script>
   
-  <style scoped>
-  .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .login-container {
-    width: 100%;
-    max-width: 70%;
-    padding: 16px;
-  }
-  .login-card {
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  .login-header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  .login-logo {
-    width: 80px;
-    height: 80px;
-  }
+<style scoped>
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-container {
+  width: 100%;
+  max-width: 70%;
+  padding: 16px;
+}
+.login-card {
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.login-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.login-logo {
+  width: 80px;
+  height: 80px;
+}
 
-  </style>
+</style>
   

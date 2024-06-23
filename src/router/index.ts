@@ -40,7 +40,7 @@ function isTokenValid(token: any) {
 function getUserRole(token: any) {
   try {
     const decoded = <JWTResponse>jwtDecode(token);
-    console.log(decoded)
+    localStorage.setItem('role', decoded?.role)
     return decoded?.role;
   } catch (e) {
     return null;
@@ -70,14 +70,14 @@ export default route(function (/* { store, ssrContext } */) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (isTokenValid(token)) {
       const userRole = getUserRole(token);
-
+      console.log(userRole);
       if (to.matched.some(record => record.meta.roles)) {
         const roles = to.meta.roles;
-        console.log(userRole)
         if (roles.includes(userRole)) {
           next();
         } else {
-          next({ name: 'forbidden' }); // Redirige a una página de "Acceso Denegado"
+          console.log(userRole) 
+          next({ name: 'Unauthorized' }); // Redirige a una página de "Acceso Denegado"
         }
       } else {
         next();
@@ -85,10 +85,10 @@ export default route(function (/* { store, ssrContext } */) {
     } else {
       next({ name: 'Sign-In' });
     }
-  }  else if (to.name === 'Sign-In' && isTokenValid(token)) {
-    
+  }  else if (to.name === 'Sign-In' && isTokenValid(token)) {    
     next({ name: '' }); // Redirige a la página de inicio si ya está autenticado
-  } else {
+  } 
+  else {
     next();
   } 
 });

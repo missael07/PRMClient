@@ -14,7 +14,7 @@
         color="white"
         text-color="teal"
         unelevated
-        to="/"
+        @click="redirectTo"
         label="Go Home"
         no-caps
       />
@@ -23,7 +23,15 @@
 </template>
 
 <script setup lang="ts">
+    import { useRouter } from 'vue-router';
+    
+    const route = useRouter();
 defineOptions({
   name: 'ErrorNotFound'
 });
+const redirectTo = () => {
+  console.log(1324)
+  const role = localStorage.getItem('role')
+  route.push({name: role !== 'admin' ? 'Dashboard' : 'Index'})
+}
 </script>

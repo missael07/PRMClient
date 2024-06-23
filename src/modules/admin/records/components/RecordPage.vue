@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import HeaderPage from "src/shared/component/HeaderPage.vue";
-import CreateRecord from "src/modules/patients/components/CreateRecord.vue";
+import CreateRecord from "./CreateRecord.vue";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { Record } from "../interfaces/record.interface";
@@ -22,9 +22,7 @@ onMounted(async () => {
 });
 
 const getRecordById = async () => {
-  console.log(params);
   const result = await getRecord(id.toString());
-  console.log(result);
   record.value = result;
   loading.value = false;
 };

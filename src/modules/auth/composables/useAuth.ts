@@ -5,12 +5,20 @@ const useAuth = ()  => {
 
     const signIn = async (credentials: any) => {
         const result = await axios.post(`${BASE_URL}/auth/signin`, credentials)
-        console.log(result)
+        localStorage.setItem('role', result.data.roles)
         return result.data;
     }
 
+    const redirectToAdminSite = (role: string) => {
+        return role === 'admin';
+    }
+    const removeToken = () => {
+        localStorage.removeItem('token');
+      }
     return {
-        signIn
+        signIn,
+        removeToken,
+        redirectToAdminSite
     }
 
 }

@@ -47,6 +47,7 @@ const col = columns.columns;
 
 const viewRecord = (event: any, row: any) => {
   const record = row;
+  console.log(record);
   route.push({ name: "Create-Record", params: { id: record.recordId } });
 };
 </script>
