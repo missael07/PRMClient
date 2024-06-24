@@ -4,8 +4,8 @@ import { Patient } from "../interface/patient.interface";
 
 const patientList = ref<Patient[]>([]);
 
-const BASE_URL = `http://localhost:3000/api`;
-// const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+
+const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
 
 const loading = ref(false);
 const usePatients = () => {

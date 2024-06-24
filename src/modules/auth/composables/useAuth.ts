@@ -1,7 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = `http://localhost:3000/api`;
-// const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
 const useAuth = ()  => {
 
     const signIn = async (credentials: any) => {
