@@ -2,8 +2,8 @@ import axios from "axios";
 import { FileResponse } from "../interfaces/file.interface";
 import { ref } from "vue";
 
-// const BASE_URL = `http://localhost:3000/api`;
-const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `http://localhost:3000/api`;
+// const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
 
 const useDiet = () => {
 

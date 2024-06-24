@@ -19,10 +19,14 @@ import PatientDialog from "../components/PatientDialog.vue";
 
 import usePatientDialog from '../composables/usePatientDialog';
 import HeaderPage from 'src/shared/component/HeaderPage.vue';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const { openDialog } = usePatientDialog();
 const addPatient = () => {
-  openDialog();
+  // openDialog();
+  router.push({name: 'Users-Information', params: {id: '0'}})
 };
 
 </script>

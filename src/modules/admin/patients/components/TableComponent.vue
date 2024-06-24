@@ -19,17 +19,26 @@
 <script setup lang="ts">
 import usePatients from '../composables/usePatients';
 import { Patient } from '../interface/patient.interface';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const columns = [
     {
         name: 'fullName',
         label: 'Nombre',
         field: 'fullName',
+        require: false,
+        align: "left",
+        sorteable: false
     },
     {
         name: 'email',
         label: 'Correo',
         field: 'email',
+        require: false,
+        align: "left",
+        sorteable: false
+
     }
 ]
 
@@ -45,6 +54,7 @@ const edit = (row: any) => {
   const patientIdx = patientList.value.findIndex(f => f.fullName === innerText || f.email === innerText)
 
   const patient: Patient = patientList.value[patientIdx]
+  // router.push({name: 'Users-Information', params: {id: patient.id}})
 }
 </script>
 

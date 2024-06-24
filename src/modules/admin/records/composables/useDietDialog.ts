@@ -3,8 +3,8 @@ import { ref } from "vue"
 
 const prompt = ref(false);
 const recordId = ref('');
-const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
-// const BASE_URL = `http://localhost:3000/api`;
+// const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `http://localhost:3000/api`;
 const useDietDialog = () => {
 
     const isLoading = ref(false);

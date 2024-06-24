@@ -1,67 +1,78 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+    <q-layout view="lHh LpR lFf">
+      <q-header reveal elevated class="bg-secondary text-white">
+        <q-toolbar class="justify-between">
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+          <q-btn dense flat round icon="logout" @click="signOut" />
+        </q-toolbar>
+      </q-header>
+
+      <q-drawer show-if-above v-model="leftDrawerOpen" side="left" behavior="desktop" elevated>
+        <!-- drawer content -->
+          <q-list>
+                <q-item-label
+                  header
+                >
+
+                    <img src="src/assets/logo.png" width="100%" height="85rem" />
+                </q-item-label>
+
+                <EssentialLink
+                  v-for="link in menu"
+                  :key="link.title"
+                  v-bind="link"
+                />
+          </q-list>
+      </q-drawer>
+
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+
+      <q-footer reveal elevated class="bg-grey-3 text-white">
+        <q-toolbar>
+          <q-toolbar-title>
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-footer>
+    </q-layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
+import { useRouter } from 'vue-router';
 
 defineOptions({
   name: 'MainLayout'
 });
-
-const linksList: EssentialLinkProps[] = [
+const menu = ref<EssentialLinkProps[]>([
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Dashboard',
+    link: 'Index',
+    icon: 'dashboard'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Pacientes',
+    link: 'Users',
+    icon: 'manage_accounts'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'Expedientes',
+    link: 'Records',
+    icon: 'library_books'
   }
-];
+]);
 
-const leftDrawerOpen = ref(false);
-
-function toggleLeftDrawer () {
+const leftDrawerOpen = ref(true);
+const router = useRouter();
+const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
+const signOut = () => {
+  localStorage.clear();
+  router.push({name: 'Sign-In'})
+}
+
 </script>

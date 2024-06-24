@@ -86,7 +86,7 @@ export default route(function (/* { store, ssrContext } */) {
       next({ name: 'Sign-In' });
     }
   }  else if (to.name === 'Sign-In' && isTokenValid(token)) {    
-    next({ name: '' }); // Redirige a la página de inicio si ya está autenticado
+    next({ name: 'Index' }); // Redirige a la página de inicio si ya está autenticado
   } 
   else {
     next();

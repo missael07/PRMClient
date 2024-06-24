@@ -1,16 +1,34 @@
 <template>
   <q-page>
-    <div class="row items-center justify-evenly">
-      <h3 class="title">Bienvenido!</h3>
-    </div>
-    <div class="row justify-evenly text-h6">
-    <div v-for="item in menu" :key="item.displayText" class="column items-center">
-      <router-link :to="{ name: item.route }" class="flex flex-column items-center no-decoration">
-        <q-icon :name="item.icon" size="6rem" />
-        <div>{{ item.displayText }}</div>
-      </router-link>
-    </div>
-  </div>
+    <q-pull-to-refresh @refresh="refresh" color="secondary"
+      
+      icon="autorenew">
+      <div class="row items-center justify-evenly" style="height: 50px;">
+        <h3 class="title">Bienvenido!</h3>
+      </div>
+      <div class="row justify-evenly">
+        <h3 class="title">Estas son tus citas de hoy {{ new Date().toLocaleDateString()}}.</h3>
+      </div>
+      <div class="q-pa-md row items-start q-gutter-md">
+        <q-card class="my-card" flat bordered v-for="(item, index) in citas" :key="index">
+          <q-card-section horizontal>
+            <q-card-section class="q-pt-xs">
+              <div class="text-overline">Cita No: {{  index + 1 }}</div>
+              <div class="text-h5 q-mt-sm q-mb-xs">{{ item.name }}</div>
+            </q-card-section>
+          </q-card-section>
+      
+          <q-separator />
+      
+          <q-card-actions>
+            <q-btn flat round icon="event" />
+            <q-btn flat>
+              {{  item.time }}
+            </q-btn>
+          </q-card-actions>
+        </q-card>
+      </div>
+    </q-pull-to-refresh>
   </q-page>
 </template>
 
@@ -21,19 +39,35 @@ defineOptions({
   name: 'IndexPage'
 });
 
-const menu = ref([
+let citas = [
   {
-    displayText: 'Pacientes',
-    route: 'Users',
-    icon: 'manage_accounts'
+    name: 'Luis Padilla',
+    time: '6:00 PM'
   },
   {
-    displayText: 'Expedientes',
-    route: 'Records',
-    icon: 'library_books'
+    name: 'José Fernandes',
+    time: '7:00 PM'
+  },
+  {
+    name: 'Lupillo Rivera',
+    time: '8:00 PM'
+  },
+  {
+    name: 'Gonzalo',
+    time: '9:00 PM'
   }
-])
+]
 
+const refresh = (done: any) => {
+        setTimeout(() => {
+          citas.push(
+            {
+              name: 'Gonzalo',
+              time: '9:00 PM'
+            })
+          done()
+        }, 1000)
+      }
 </script>
 
 <style lang="scss" scoped>

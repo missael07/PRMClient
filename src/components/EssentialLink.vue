@@ -2,6 +2,7 @@
   <q-item
     clickable
     :to="{name: link}"
+    class="item"
   >
     <q-item-section
       v-if="icon"
@@ -35,3 +36,14 @@ withDefaults(defineProps<EssentialLinkProps>(), {
   icon: '',
 });
 </script>
+
+<style lang="scss" scoped>
+.item {
+  color: var(--q-secondary) !important;
+  opacity: .5;
+}
+.q-item.q-router-link--active {
+  font-weight: bolder;
+  opacity: 1;
+}
+</style>
