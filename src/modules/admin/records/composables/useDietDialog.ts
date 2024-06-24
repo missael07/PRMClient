@@ -4,7 +4,7 @@ import { ref } from "vue"
 const prompt = ref(false);
 const recordId = ref('');
 
-const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `${process.env.VUE_APP_API_URL}`;
 const useDietDialog = () => {
 
     const isLoading = ref(false);

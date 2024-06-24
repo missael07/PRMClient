@@ -2,7 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { ref } from "vue";
 
-const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `${process.env.VUE_APP_API_URL}`;
 
 interface JWTResponse {
     role: string;

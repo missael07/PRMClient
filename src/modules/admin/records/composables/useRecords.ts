@@ -4,7 +4,7 @@ import { Record } from "../interfaces/record.interface";
 import { Patient } from '../../patients/interface/patient.interface';
 
 
-const BASE_URL = `${process.env.VUE_APP_API_URL}/api`;
+const BASE_URL = `${process.env.VUE_APP_API_URL}`;
 
 const recordList = ref([]);
 const loading = ref(false);
